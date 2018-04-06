@@ -1,0 +1,11 @@
+version: "3"
+services:
+
+  rails_ds:
+    image: ds_conexao_doadores
+    network_mode: bridge
+    command: rails s
+    volumes:
+      - ./conexao_doadores/:/conexao_doadores/
+    ports:
+      - 3000:3000
