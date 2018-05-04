@@ -7,3 +7,5 @@ COPY $PWD/conexao_doadores/Gemfile /conexao_doadores/Gemfile
 COPY $PWD/conexao_doadores/Gemfile.lock /conexao_doadores/Gemfile.lock
 RUN bundle install
 COPY $PWD/conexao_doadores/ /conexao_doadores
+EXPOSE 3000
+CMD ["bundle", "exec", "rails", "s", "-b", "0.0.0.0"]
