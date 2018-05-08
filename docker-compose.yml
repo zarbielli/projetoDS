@@ -22,8 +22,8 @@ services:
     image: postgres:9.4
     network_mode: bridge
     volumes:
-      - ./db_volume:/var/lib/postgresql/data
-      - ./dump_db:/var/lib/postgresql/dump
+      - ./psql_config/db_volume:/var/lib/postgresql/data
+      - ./psql_config/dump_db:/var/lib/postgresql/dump
     environment:
       - POSTGRES_USER=ds_conexao
       - POSTGRES_PASSWORD=ds_doadores
