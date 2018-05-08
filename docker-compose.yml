@@ -4,7 +4,26 @@ services:
   rails_ds:
     image: ds_conexao_doadores
     network_mode: bridge
+    command: bash -c "bundle install && bundle exec rails s -b 0.0.0.0"
     volumes:
       - ./conexao_doadores/:/conexao_doadores/
     ports:
       - 3000:3000
+    environment:
+      - HOST_DB=psql_ds
+      - POSTGRES_USER=ds_conexao
+      - POSTGRES_PASSWORD=ds_doadores
+    depends_on:
+      - psql_ds
+    links:
+      - psql_ds:psql_ds
+
+  psql_ds:
+    image: postgres:9.4
+    network_mode: bridge
+    volumes:
+      - ./db_volume:/var/lib/postgresql/data
+      - ./dump_db:/var/lib/postgresql/dump
+    environment:
+      - POSTGRES_USER=ds_conexao
+      - POSTGRES_PASSWORD=ds_doadores
