@@ -4,7 +4,9 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :email
       t.string :cnpj
       t.string :password_digest
-
+      t.string :type
+      t.string :donations_made
+      t.string :donations_priority
       t.timestamps
     end
   end
