@@ -1,0 +1,15 @@
+  <%= form_for :session, url: sign_in_path do |form| %>
+    <div class="field">
+      <%= form.label :cnpj %><br />
+      <%= form.text_field :cnpj, autofocus: true %>
+    </div>
+   
+    <div class="field">
+      <%= form.label :password %><br />
+      <%= form.password_field :password, autocomplete: "off" %>
+    </div>
+    <div class="actions">
+      <%= form.submit "Log in" %>
+    </div>
+  <p>New user? <%= link_to "Sign up now!", new_user_path %></p>
+  <% end %>
