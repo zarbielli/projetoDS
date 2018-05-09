@@ -31,7 +31,11 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#login" class="btn btn-danger btn-fill">Login</a>
+                    <% if logged_in? %>
+                        <%= link_to "Log out", sign_out_path, method: "delete", class: 'btn btn-danger btn-fill' %>
+                    <% else %>
+                        <a href="sign_in" class="btn btn-danger btn-fill">Login</a>    
+                    <% end %>                
                 </li>
             </ul>
         </div>
