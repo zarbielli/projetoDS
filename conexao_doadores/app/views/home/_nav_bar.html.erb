@@ -31,7 +31,11 @@
                     </ul>
                 </li>
                 <li>
-                    <a class="btn btn-danger btn-fill" data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();">Log in</a>                
+                    <% if logged_in? %>
+                        <%= link_to "Log out", sign_out_path, method: "delete", class: 'btn btn-danger btn-fill' %>
+                    <% else %>
+                        <a href="sign_in" class="btn btn-danger btn-fill" data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();">Login</a>    
+                    <% end %>
                 </li>
             </ul>
         </div>
