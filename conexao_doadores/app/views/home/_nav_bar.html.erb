@@ -31,10 +31,12 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#login" class="btn btn-danger btn-fill">Login</a>
+                    <a class="btn btn-danger btn-fill" data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();">Log in</a>                
                 </li>
             </ul>
         </div>
         <!-- /.navbar-collapse -->
     </div>
 </nav>
+
+<%= render :partial => 'sessions/login'%>

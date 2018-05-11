@@ -10,6 +10,8 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w( conexao_doadores.css )
 Rails.application.config.assets.precompile += %w( pe-icon-7-stroke.css )
 Rails.application.config.assets.precompile += %w( conexao_doadores.js )
+Rails.application.config.assets.precompile += %w( login-register.css )
+Rails.application.config.assets.precompile += %w( login-register.js )
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets

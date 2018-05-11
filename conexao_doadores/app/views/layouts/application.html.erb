@@ -4,9 +4,15 @@
     <title>ConexaoDoadores</title>
     <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', 
+                            'http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css',
+                            integrity: true,
+                            crossorigin: 'anonymous' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'https://code.jquery.com/jquery-3.3.1.min.js', integrity: true, crossorigin: 'anonymous' %>
+    <%= javascript_include_tag 'https://code.jquery.com/jquery-3.3.1.min.js', 
+                               'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js',
+                                integrity: true, crossorigin: 'anonymous' %>
   </head>
 
   <body id='conexao_doadores'>
