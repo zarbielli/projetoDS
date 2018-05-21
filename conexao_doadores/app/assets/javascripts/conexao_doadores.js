@@ -180,7 +180,6 @@ gaia = {
                   var $image = $elem.children('.image');
 
             	  oVal = ((window_bottom - parent_top) / 3);
-                  $image.css('transform','translate3d(0px, ' + oVal + 'px, 0px)');
         	    }
             });
 

@@ -32,9 +32,9 @@
                 </li>
                 <li>
                     <% if logged_in? %>
-                        <%= link_to "Log out", sign_out_path, method: "delete", class: 'btn btn-danger btn-fill' %>
+                        <%= link_to "Log out", logout_path, method: "delete", class: 'btn btn-danger btn-fill' %>
                     <% else %>
-                        <a href="sign_in" class="btn btn-danger btn-fill" data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();">Login</a>    
+                        <%= link_to "Login", login_path, class: 'btn btn-danger btn-fill', data: {toogle: "modal"}, onclick: "openLoginModal();", href: "javascript:void(0)" %>                    
                     <% end %>
                 </li>
             </ul>

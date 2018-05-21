@@ -26,7 +26,7 @@
                     <%= form.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Senha" %>
                   </div>
                   <div class="actions">
-                    <%= form.submit "Log in", class: "btn btn-default btn-login" %>
+                    <%= form.submit "Login", class: "btn btn-default btn-login" %>
                   </div>
                 <% end %>
               </div>
@@ -35,12 +35,26 @@
           <div class="box">
             <div class="content registerBox" style="display:none;">
               <div class="form">
-                <form method="post" html="{:multipart=>true}" data-remote="true" action="/register" accept-charset="UTF-8">
-                  <input id="email" class="form-control" type="text" placeholder="Email" name="email">
-                  <input id="password" class="form-control" type="password" placeholder="Password" name="password">
-                  <input id="password_confirmation" class="form-control" type="password" placeholder="Repeat Password" name="password_confirmation">
-                  <input class="btn btn-default btn-register" type="submit" value="Create account" name="commit">
-                </form>
+              <%= form_for :user, :url => {controller: "users", action: "create"} do |form| %>
+                <div class="field">
+                  <%= form.email_field :email, class: "form-control", placeholder: "Email"%>
+                </div>
+                <div class="field">
+                  <%= form.text_field :cnpj, class: "form-control", placeholder: "CNPJ"%>
+                </div>
+                <div class="field">
+                  <%= form.password_field :password, class: "form-control", placeholder: "Senha"%>
+                </div>
+                <div class="field">
+                  <%= form.password_field :password_confirmation, class: "form-control", placeholder: "Confirmação de senha "%>
+                </div>
+                <div class="field">
+                  <%= form.select :type, [['Doador', 'Donator'], ['Caridade', 'Charity']], {include_blank: ''}, {class: "form-control", required: true}%>
+                </div>
+                  <div class="actions">
+                    <%= form.submit "Confirmar", class: "btn btn-default btn-register" %>
+                  </div>
+                <% end %>
               </div>
             </div>
           </div>
