@@ -1,0 +1,31 @@
+<%= stylesheet_link_tag 'paper-dashboard',
+                        'animate.min.css',
+                        'bootstrap4.min.css',
+                        'themify-icons',
+                        'https://fonts.googleapis.com/css?family=Muli:400,300' %>
+
+<%= javascript_include_tag  'bootstrap4.min.js',
+                            'bootstrap-checkbox-radio',
+                            'chartist.min.js',
+                            'bootstrap-notify',
+                            'paper-dashboard' %>
+
+
+
+
+<div class="wrapper">
+    <%= render 'sidebar' %>
+
+    <div class="main-panel">
+        <%= render 'navbar' %>
+
+        <%= render 'dashboard' %>
+        <%= render 'user' %>
+        <%= render 'donates' %>
+        <%= render 'products' %>
+        <%= render 'user-managments' %>
+        <%= render 'notifications' %>
+        <%= render 'footer' %>
+
+    </div>
+</div>
