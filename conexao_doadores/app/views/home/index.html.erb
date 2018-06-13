@@ -12,6 +12,9 @@
 
 <%= render partial: 'nav_bar'%>
 
+<% if flash[:warning] %>
+    <div class="warning"><%= flash[:warning] %></div>
+<% end %>
 
 <div class="section section-header">
     <div class="parallax filter filter-color-red">
