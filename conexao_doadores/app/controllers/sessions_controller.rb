@@ -4,7 +4,13 @@ class SessionsController < ApplicationController
     user = User.find_by(cnpj: params[:session][:cnpj])
     if user && user.authenticate(params[:session][:password])
       sign_in user
-      redirect_to user
+      if user.type == "Donator"
+        redirect_to :controller => "donators", :action => "index"
+      elsif user.type = "Charity"
+        redirect_to :controller => "charities", :action => "index"
+      elsif user.type = "Admin"
+        redirect_to :controller -> "admins", :action => "index"        
+      end
     else
       redirect_to root_path
     end
