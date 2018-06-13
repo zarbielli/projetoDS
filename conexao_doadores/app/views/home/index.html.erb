@@ -1,10 +1,12 @@
-<%= stylesheet_link_tag 'https://fonts.googleapis.com/css?family=Cambo|Poppins:400,600', 
-                        'conexao_doadores',
+<%= stylesheet_link_tag 'cambo_poppins',
                         'pe-icon-7-stroke',
+                        'bootstrap3-7.min.css',
+                        'conexao_doadores',
                         integrity: true,
                         crossorigin: 'anonymous'
     %>
-<%= javascript_include_tag  'https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js',
+<%= javascript_include_tag  'bootstrap3-7.min.js',
+                            'modernizr.min.js',
                             'conexao_doadores',
                             integrity: true, crossorigin: 'anonymous' %>
 
@@ -12,6 +14,9 @@
 
 <%= render partial: 'nav_bar'%>
 
+<% if flash[:warning] %>
+    <div class="warning"><%= flash[:warning] %></div>
+<% end %>
 
 <div class="section section-header">
     <div class="parallax filter filter-color-red">
