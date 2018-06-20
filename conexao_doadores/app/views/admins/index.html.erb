@@ -19,7 +19,7 @@
     <div class="main-panel">
         <%= render 'navbar' %>
 
-        <%= render 'dashboard' %>
+        <%= render partial: 'dashboard' , locals: {charities: @charities , donators: @donators} %>
         <%= render 'user' %>
         <%= render 'donates' %>
         <%= render 'products' %>

@@ -13,7 +13,7 @@
                             <div class="col-xs-7">
                                 <div class="numbers">
                                     <p>Doadores Pendentes</p>
-                                    30
+                                    <%= donators.size%>
                                 </div>
                             </div>
                         </div>
@@ -38,7 +38,7 @@
                             <div class="col-xs-7">
                                 <div class="numbers">
                                     <p>Instituições Pendentes</p>
-                                    30
+                                    <%= charities.size%>
                                 </div>
                             </div>
                         </div>
@@ -61,7 +61,38 @@
                         <p class="category">Cadastros pendentes</p>
                     </div>
                     <div class="content">
-                        <div id="chartHours" class="ct-chart"></div>
+                        <div class="content table-responsive table-full-width table-wrapper">
+                            <table class="table table-striped">
+                                <tbody>
+                                    <thead>
+                                        <tr> 
+                                            <th>CNPJ</th>                                            
+                                            <th>Email</th>                                            
+                                            <th>Aprovar</th>                                            
+                                            <th>Recusar</th>                                            
+                                        </tr>
+                                    </thead>
+                                    <% donators.each do |donator|%>
+                                        <tr>
+                                            <td><%= donator.cnpj %></td>
+                                            
+                                            <td><%= donator.email %></td>
+                                            
+                                            <td>
+                                                <%= button_to approve_path(donator.id), method: :put, class: 'btn btn-success' do %>
+                                                    <i class="fa fa-check"></i>
+                                                <%end%>
+                                            </td>
+                                            <td>
+                                                <%= button_to refuse_path(donator.id), method: :delete, class: 'btn btn-danger' do %>
+                                                    <i class="fa fa-times"></i>
+                                                <%end%>
+                                            </td>
+                                        </tr>
+                                    <% end %>
+                                </tbody>
+                            </table>
+                        </div>
                         <div class="footer">
                             <div class="chart-legend">
                                 <i class="fa fa-circle text-info"></i> Open
@@ -86,7 +117,39 @@
                         <p class="category">Cadastros pendentes</p>
                     </div>
                     <div class="content">
-                        <div id="chartHours" class="ct-chart"></div>
+                       <div class="content table-responsive table-full-width table-wrapper">
+                            <table class="table table-striped">
+                                <tbody>
+                                    <thead>
+                                        <tr> 
+                                            <th>CNPJ</th>                                            
+                                            <th>Email</th>                                            
+                                            <th>Aprovar</th>                                            
+                                            <th>Recusar</th>                                            
+                                        </tr>
+                                    </thead>
+                                    <% charities.each do |charity|%>
+                                        <tr>
+                                            <td><%= charity.cnpj %></td>
+                                            
+                                            <td><%= charity.email %></td>
+                                            
+                                            <td>
+                                                <%= button_to approve_path(charity.id), method: :put, class: 'btn btn-success' do %>
+                                                    <i class="fa fa-check"></i>
+                                                <%end%>
+                                            </td>
+                                            <td>
+                                                <%= button_to refuse_path(charity.id), method: :delete, class: 'btn btn-danger' do %>
+                                                    <i class="fa fa-times"></i>
+                                                <%end%>
+                                            </td>
+                                        </tr>
+                                    <% end %>
+                                </tbody>
+                            </table>
+                        </div>
+
                         <div class="footer">
                             <div class="chart-legend">
                                 <i class="fa fa-circle text-info"></i> Open
