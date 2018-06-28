@@ -41,4 +41,11 @@ $(document).ready(function(){
         $('#notifications').addClass('active');
         $('#content-notifications').fadeIn(600);
     })
+    $('#new-donate').click(function(){
+        let id = $('.active').attr('id');
+        $('#'+id).removeClass('active');
+        $('#content-'+id).fadeOut(500);
+        $('#new-donate').addClass('active');
+        $('#content-new-donate').fadeIn(600);
+    })
 });

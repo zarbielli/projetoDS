@@ -18,7 +18,6 @@ class AdminsController < ApplicationController
   end
 
   def approve_register
-    puts "teste" * 1000
     register_validate = RegisterValidate.find_by(user_id: params[:user_id])
     register_validate.status = true
     register_validate.save

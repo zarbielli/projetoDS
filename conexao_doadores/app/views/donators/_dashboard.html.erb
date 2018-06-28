@@ -1,0 +1,258 @@
+<div class="content" id="content-dashboard">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Doações Cadastradas</h4>
+                    </div>
+                    <div class="content">
+                        <div class="content table-responsive table-full-width">
+                            <table class="table table-responsive" id="table-created-donation">
+                                <tbody>
+                                    <thead>
+                                        <tr> 
+                                            <th>Produtos</th>                                            
+                                            <th>Status</th>                                            
+                                            <th>Data</th>                                            
+                                        </tr>
+                                    </thead>
+                                    <% created_donates.each do |donate|%>
+                                        <tr>    
+                                            <td class="col-md-2">
+                                                <button class= "btn btn-sm btn-success btn-icon" id="btn-show-products">
+                                                    <i class="fa fa-plus button-show-more" id="donate-<%= donate.id %>"></i>
+                                                </button>
+                                            </td>
+                                            <% if donate.status == "created" %>
+                                             <td class="col-md-3"> Doação sem candidatos </td>
+                                            <% end %>
+                                            <td><%= donate.created_at.to_date.strftime("%d/%m/%Y") %></td>
+                                        </tr>
+                                        <tr>
+                                        <td colspan="3">
+                                        <table class="table table-striped table-responsive sub-table" hidden="true" id="donate-<%= donate.id %>-sub-table">
+                                            <tbody>
+                                                <thead >
+                                                    <tr> 
+                                                        <th> Descrição </th>                                            
+                                                        <th> Validade do Produto </th>                                            
+                                                        <th> Tipo do Produto </th>                                            
+                                                        <th> Quantidade </th>                                            
+                                                        <th> Unidade de Medida </th>                                            
+                                                    </tr>
+                                                </thead>
+                                                <% donate.products.each do |product|%>
+                                                    <tr class="sub-table">
+                                                        <td><%= product.description %> </td>
+                                                        <td><%= product.validity.strftime("%d/%m/%Y") %> </td>
+                                                        <td><%= product.product_type %> </td>
+                                                        <td><%= product.amount %> </td>
+                                                        <td><%= product.unit_measurement %> </td>
+                                                    </tr>
+                                                <% end %>
+                                            </tbody>
+                                        </table>
+                                        </td>
+                                        </tr>
+                                    <% end %>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="footer">
+                            <div class="stats">
+                                <i class="ti-reload"></i> Atualizado Agora
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Doações em Progresso</h4>
+                    </div>
+                    <div class="content">
+                        <div class="content table-responsive table-full-width">
+                            <table class="table table-responsive" id="table-progress-donation">
+                                <tbody>
+                                    <thead>
+                                        <tr> 
+                                            <th>Produtos</th>                                            
+                                            <th>Status</th>                                            
+                                            <th>Data</th>                                            
+                                        </tr>
+                                    </thead>
+                                    <% progress_donates.each do |donate|%>
+                                        <tr>    
+                                            <td class="col-md-2">
+                                                <button class= "btn btn-sm btn-success btn-icon" id="btn-show-products">
+                                                    <i class="fa fa-plus button-show-more" id="donate-<%= donate.id %>"></i>
+                                                </button>
+                                            </td>
+                                            <% if donate.status == "progress" %>
+                                             <td class="col-md-3"> Em progresso </td>
+                                            <% end %>
+                                            <td><%= donate.created_at.to_date.strftime("%d/%m/%Y") %></td>
+                                        </tr>
+                                        <tr>
+                                        <td colspan="3">
+                                        <table class="table table-striped table-responsive sub-table" hidden="true" id="donate-<%= donate.id %>-sub-table">
+                                            <tbody>
+                                                <thead >
+                                                    <tr> 
+                                                        <th> Descrição </th>                                            
+                                                        <th> Validade do Produto </th>                                            
+                                                        <th> Tipo do Produto </th>                                            
+                                                        <th> Quantidade </th>                                            
+                                                        <th> Unidade de Medida </th>                                            
+                                                    </tr>
+                                                </thead>
+                                                <% donate.products.each do |product|%>
+                                                    <tr class="sub-table">
+                                                        <td><%= product.description %> </td>
+                                                        <td><%= product.validity.strftime("%d/%m/%Y") %> </td>
+                                                        <td><%= product.product_type %> </td>
+                                                        <td><%= product.amount %> </td>
+                                                        <td><%= product.unit_measurement %> </td>
+                                                    </tr>
+                                                <% end %>
+                                            </tbody>
+                                        </table>
+                                        </td>
+                                        </tr>
+                                    <% end %>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="footer">
+                            <div class="stats">
+                                <i class="ti-reload"></i> Atualizado agora
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Doações Realizadas</h4>
+                    </div>
+                    <div class="content">
+                        <div class="content table-responsive table-full-width">
+                            <table class="table table-responsive" id="table-made-donation">
+                                <tbody>
+                                    <thead>
+                                        <tr> 
+                                            <th>Produtos</th>                                            
+                                            <th>Status</th>                                            
+                                            <th>Data</th>                                            
+                                        </tr>
+                                    </thead>
+                                    <% made_donates.each do |donate|%>
+                                        <tr>    
+                                            <td class="col-md-2">
+                                                <button class= "btn btn-sm btn-success btn-icon" id="btn-show-products">
+                                                    <i class="fa fa-plus button-show-more" id="donate-<%= donate.id %>"></i>
+                                                </button>
+                                            </td>
+                                            <% if donate.status == "made" %>
+                                             <td class="col-md-3"> Encerrada </td>
+                                            <% end %>
+                                            <td><%= donate.created_at.to_date.strftime("%d/%m/%Y") %></td>
+                                        </tr>
+                                        <tr>
+                                        <td colspan="3">
+                                        <table class="table table-striped table-responsive sub-table" hidden="true" id="donate-<%= donate.id %>-sub-table">
+                                            <tbody>
+                                                <thead >
+                                                    <tr> 
+                                                        <th> Descrição </th>                                            
+                                                        <th> Validade do Produto </th>                                            
+                                                        <th> Tipo do Produto </th>                                            
+                                                        <th> Quantidade </th>                                            
+                                                        <th> Unidade de Medida </th>                                            
+                                                    </tr>
+                                                </thead>
+                                                <% donate.products.each do |product|%>
+                                                    <tr class="sub-table">
+                                                        <td><%= product.description %> </td>
+                                                        <td><%= product.validity.strftime("%d/%m/%Y") %> </td>
+                                                        <td><%= product.product_type %> </td>
+                                                        <td><%= product.amount %> </td>
+                                                        <td><%= product.unit_measurement %> </td>
+                                                    </tr>
+                                                <% end %>
+                                            </tbody>
+                                        </table>
+                                        </td>
+                                        </tr>
+                                    <% end %>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="footer">
+                            <div class="stats">
+                                <i class="ti-reload"></i> Atualizado agora
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    const buttonFunction = function(event, flag=0) {
+        let idButton;
+        if(flag) {
+            const iButton = $(event.target).children().get(0);
+            idButton = $(iButton).attr('id');
+        } else {
+            idButton = $(event.target).get(0).id;
+        }
+        if ($(`#${idButton}-sub-table:visible`).length == 0) {
+            $(`#${idButton}-sub-table`).fadeIn(300);
+            $(`#${idButton}`).parent().removeClass('btn-success')
+            $(`#${idButton}`).parent().addClass('btn-danger');
+            $(`#${idButton}`).removeClass('fa-plus');
+            $(`#${idButton}`).addClass('fa-minus')
+        } else {
+            $(`#${idButton}-sub-table`).fadeOut(300);
+            $(`#${idButton}`).parent().removeClass('btn-danger')
+            $(`#${idButton}`).parent().addClass('btn-success')
+            $(`#${idButton}`).removeClass('fa-minus');
+            $(`#${idButton}`).addClass('fa-plus')
+        }
+    }
+    $(document).ready(function() {
+        $('#table-created-donation').on('click', '#btn-show-products', function(event) {
+            buttonFunction(event, 1);
+            
+        });
+         $('#table-created-donation').on('click', '.button-show-more', function (event) {
+             buttonFunction(event);
+
+        });
+         $('#table-progress-donation').on('click', '#btn-show-products', function(event) {
+            buttonFunction(event, 1);
+            
+        });
+         $('#table-progress-donation').on('click', '.button-show-more', function (event) {
+             buttonFunction(event);
+
+        });
+        $('#table-made-donation').on('click', '#btn-show-products', function(event) {
+            buttonFunction(event, 1);
+            
+        });
+         $('#table-made-donation').on('click', '.button-show-more', function (event) {
+             buttonFunction(event);
+        });
+    });
+</script>

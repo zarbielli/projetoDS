@@ -1,1 +1,29 @@
-<h1> Donators </h1>
+<%= stylesheet_link_tag 'paper-dashboard',
+                        'animate.min.css',
+                        'bootstrap4.min.css',
+                        'themify-icons',
+                        'https://fonts.googleapis.com/css?family=Muli:400,300' %>
+
+<%= javascript_include_tag  'bootstrap4.min.js',
+                            'bootstrap-checkbox-radio',
+                            'chartist.min.js',
+                            'bootstrap-notify',
+                            'paper-dashboard',
+                            'new-donate' %>
+
+
+
+
+<div class="wrapper">
+    <%= render 'sidebar' %>
+
+    <div class="main-panel">
+        <%= render 'navbar' %>
+
+        <%= render partial: 'dashboard' , locals: {created_donates: @created_donates , progress_donates: @progress_donates, made_donates: @made_donates} %>
+        <%= render 'new-donate' %>
+        <%= render 'user' %>
+        <%= render 'footer' %>
+
+    </div>
+</div>

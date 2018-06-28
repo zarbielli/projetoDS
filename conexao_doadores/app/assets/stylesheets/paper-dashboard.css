@@ -2770,3 +2770,23 @@ textarea.form-control {
   overflow-y: auto;
   -ms-overflow-style: -ms-autohiding-scrollbar;
 }
+
+.sub-table {
+  background-color: #eeeeef !important;
+  font-size: 13px !important;
+}
+.sub-table thead tr > th {
+  font-weight: bold !important;
+}
+
+#table-created-donation thead tr > th {
+  font-weight: bold !important;
+}
+
+#table-progress-donation thead tr > th {
+  font-weight: bold !important;
+}
+
+#table-made-donation thead tr > th {
+  font-weight: bold !important;
+}

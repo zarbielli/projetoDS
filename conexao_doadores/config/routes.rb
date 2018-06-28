@@ -14,6 +14,6 @@ Rails.application.routes.draw do
 
   put '/approveRegister/:user_id', to: 'admins#approve_register', as: 'approve'
   delete '/refuseRegister/:user_id', to: 'admins#refuse_register', as: 'refuse'
-
+  post 'new-donate' => 'donators#new_donate'
 
 end
