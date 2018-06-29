@@ -1,4 +1,4 @@
-<div class="content" id="content-user">
+<div class="content" id="content-address">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -7,58 +7,63 @@
                         <h4 class="title">Cadastrar Endereço</h4>
                     </div>
                     <div class="content">
-                        <form>
+                        <form id="form-address">
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
 										<label>Logradouro</label>
-                                        <input type="text" class="form-control border-input" placeholder="Logradouro">
+                                        <input type="text" id="public_place" class="form-control border-input" placeholder="Logradouro" required="true">
                                     </div>
 								</div>
 								<div class="col-md-3">
 									<div class="form-group">
 										<label>Bairro</label>
-										<input type="text" class="form-control border-input" placeholder="Bairro">
+										<input type="text" id="neighborhood" class="form-control border-input" placeholder="Bairro">
 									</div>
 								</div>
 								<div class="col-md-3">
 									<div class="form-group">
 										<label>Numero</label>
-										<input type="text" class="form-control border-input" placeholder="Numero">
+										<input type="number" id="number" class="form-control border-input" placeholder="Numero">
 									</div>
 								</div>
 								<div class="col-md-3">
 									<div class="form-group">
 										<label>Informações Adicionais</label>
-										<input type="text" class="form-control border-input" placeholder="Informações Adicionais">
+										<input type="text" id="additional_information" class="form-control border-input" placeholder="Informações Adicionais">
 									</div>
 								</div>
                             </div>
 
                             <div class="row">
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Cidade</label>
-                                        <input type="text" class="form-control border-input" placeholder="Cidade">
+                                        <input type="text" id="city" class="form-control border-input" placeholder="Cidade" required="true">
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label>Estado</label>
-                                        <input type="text" class="form-control border-input" placeholder="Estado">
+                                        <input type="text" id="state" class="form-control border-input" placeholder="Estado" required="true">
                                     </div>
                                 </div>
-                                <div class="col-md-4">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label>Região</label>
+                                        <input type="text" id="region" class="form-control border-input" placeholder="Região" required="true">
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
                                     <div class="form-group">
                                         <label>CEP</label>
-                                        <input type="number" class="form-control border-input" placeholder="CEP">
+                                        <input type="number" id="CEP" class="form-control border-input" placeholder="CEP" required="true">
                                     </div>
-                                </div>
+                                </div>          
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-info btn-fill btn-wd">Cadastrar Endereço</button>
+                                <button type="submit" class="btn btn-info btn-fill" id="submit-address">Cadastrar Endereço</button>
                             </div>
-                            <div class="clearfix"></div>
                         </form>
                     </div>
                 </div>
@@ -66,3 +71,21 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    const addressJson = {}
+    $('#submit-address').click(function(event) {
+        addressJson["public_place"] = $('#public_place').val();            
+        addressJson["neighborhood"] = $('#neighborhood').val();
+        addressJson["number"] = $('#number').val();
+        addressJson["additional_information"] = $('#additional_information').val();
+        addressJson["city"] = $('#city').val();
+        addressJson["state"] = $('#state').val();
+        addressJson["region"] = $('#region').val();
+        addressJson["CEP"] = $('#CEP').val();
+        alert(JSON.stringify(addressJson));
+        $.post('/new-address', {'address': JSON.stringify(addressJson)}, function(data){
+            location.reload();
+        });
+    });
+</script>

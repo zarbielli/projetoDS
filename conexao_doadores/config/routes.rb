@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   put '/cancelDonate/:donate_id', to: 'charities#cancel_donate', as: 'cancel'
   put '/notifyDonate/:donate_id', to: 'charities#notify_donate', as: 'notify'
   post 'new-donate' => 'donators#new_donate'
-  post 'new-address' => 'users#create-address'
+  post 'new-address' => 'users#create_address'
   post 'update-address' => 'users#update_address'
   post 'update-user' => 'users#update_user'
 
