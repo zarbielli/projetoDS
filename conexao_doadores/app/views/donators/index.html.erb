@@ -15,15 +15,18 @@
 
 
 <div class="wrapper">
-    <%= render 'sidebar' %>
-
-    <div class="main-panel">
+    <% if !current_user.adresses%>
         <%= render 'navbar' %>
+        <%= render 'create_address' %>
+    <% else %>
+        <%= render 'sidebar' %>
 
-        <%= render partial: 'dashboard' , locals: {created_donates: @created_donates , progress_donates: @progress_donates, made_donates: @made_donates} %>
-        <%= render 'new-donate' %>
-        <%= render 'user' %>
-        <%= render 'footer' %>
-
-    </div>
+        <div class="main-panel">
+            <%= render 'navbar' %>
+            
+            <%= render partial: 'dashboard' , locals: {created_donates: @created_donates , progress_donates: @progress_donates, made_donates: @made_donates} %>
+            <%= render 'new-donate' %>
+            <%= render 'user' %>
+            <%= render 'footer' %>
+    <% end %>
 </div>
