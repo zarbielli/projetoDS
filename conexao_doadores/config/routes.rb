@@ -13,7 +13,10 @@ Rails.application.routes.draw do
   root 'home#index'
 
   put '/approveRegister/:user_id', to: 'admins#approve_register', as: 'approve'
+  put '/acceptDonate/:donate_id', to: 'charities#accept_donate', as: 'accept'
   delete '/refuseRegister/:user_id', to: 'admins#refuse_register', as: 'refuse'
+  put '/cancelDonate/:donate_id', to: 'charities#cancel_donate', as: 'cancel'
+  put '/notifyDonate/:donate_id', to: 'charities#notify_donate', as: 'notify'
   post 'new-donate' => 'donators#new_donate'
 
 end
