@@ -64,6 +64,12 @@ class UsersController < ApplicationController
     end
   end
 
+  def create_address
+    address = JSON.parse params[:address]
+    address['user'] = current_user
+    Address.create(address)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
