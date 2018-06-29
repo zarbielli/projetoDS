@@ -19,5 +19,7 @@ Rails.application.routes.draw do
   put '/notifyDonate/:donate_id', to: 'charities#notify_donate', as: 'notify'
   post 'new-donate' => 'donators#new_donate'
   post 'new-address' => 'users#create-address'
+  post 'update-address' => 'users#update_address'
+  post 'update-user' => 'users#update_user'
 
 end

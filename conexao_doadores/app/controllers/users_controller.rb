@@ -70,6 +70,18 @@ class UsersController < ApplicationController
     Address.create(address)
   end
 
+  def update_address
+    address = User.find(current_user.id).address
+    new_address = JSON.parse params[:address]
+    Address.update(new_address)
+  end
+
+  def update_user
+    user = User.find(current_user.id)
+    new_user = JSON.parse params[:user]
+    User.update(new_user)
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
