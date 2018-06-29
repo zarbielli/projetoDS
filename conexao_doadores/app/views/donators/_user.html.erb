@@ -91,14 +91,14 @@
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <label>Nome</label>
-                                        <input type="text" class="form-control border-input" disabled placeholder="<%= current_user.name %>" value="<%= current_user.name %>">
+                                        <input type="text" id="name_profile" class="form-control border-input" disabled placeholder="<%= current_user.name %>" value="<%= current_user.name %>">
                                     </div>
                                 </div>
                                 <div class="col-md-3">
                             
                                     <div class="form-group">
-                                        <label for="InputEmail1">Telefone</label>
-                                        <input type="email" class="form-control border-input" disabled placeholder="<%= current_user.phone %>" value="<%= current_user.phone %>">
+                                        <label >Telefone</label>
+                                        <input type="text" id="phone_profile" class="form-control border-input" disabled placeholder="<%= current_user.phone %>" value="<%= current_user.phone %>">
                                     </div>
                                 </div>
                             </div>
@@ -106,22 +106,25 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="InputEmail1">Email </label>
-                                        <input type="email" class="form-control border-input" disabled placeholder="<%= current_user.email %>" value="<%= current_user.email %>">
+                                        <label for="InputEmail1">Email</label>
+                                        <input type="email" id="email_profile" class="form-control border-input" disabled placeholder="<%= current_user.email %>" value="<%= current_user.email %>">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="InputEmail1">Senha</label>
-                                        <input type="password" class="form-control border-input" disabled>
+                                        <label >Senha</label>
+                                        <input type="password" id="password_profile" class="form-control border-input" disabled>
                                     </div>
                                 </div>
                             </div>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-info btn-fill btn-wd">Atualizar Perfil</button>
+                            <div class="text-center" id="div-confirm-profile" hidden="true">
+                                <button type="submit" class="btn btn-success btn-wd" id="confirm-profile">Atualizar Perfil</button>
                             </div>
                             <div class="clearfix"></div>
                         </form>
+                        <div class="text-center">
+                            <button class="btn btn-info btn-wd" id="update-profile">Atualizar Perfil</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -154,6 +157,28 @@ $(document).ready(function () {
         addressJson["number"] = $('#number_address').val();
         addressJson["additional_information"] = $('#additional_information').val();
         $.post('/update-address', {'address': JSON.stringify(addressJson)}, function(data) {
+            location.reload();
+        });
+    });
+
+    $('#update-profile').click(function(event) {
+        $(event.target).fadeOut(200, function() {
+            $('#div-confirm-profile').fadeIn(300);
+            $('#name_profile').attr("disabled", false);
+            $('#phone_profile').attr("disabled", false);
+            $('#password_profile').attr("disabled", false);
+            $('#email_profile').attr("disabled", false);
+        });
+    });
+    $('#confirm-profile').click(function(){
+        const userJson = {};
+        userJson ["name"] = $('#name_profile').val();
+        userJson ["phone"] = $('#phone_profile').val();
+        if($('#password_profile').val()) {
+            userJson ["password"] = $('#password_profile').val();
+        }
+        userJson ["email"] = $('#email_profile').val();
+        $.post('/update-user', {'user': JSON.stringify(userJson)}, function(data) {
             location.reload();
         });
     });

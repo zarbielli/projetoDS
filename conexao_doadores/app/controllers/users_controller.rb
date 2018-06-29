@@ -79,7 +79,7 @@ class UsersController < ApplicationController
   def update_user
     user = User.find(current_user.id)
     new_user = JSON.parse params[:user]
-    User.update(new_user)
+    current_user.update(new_user)
   end
 
   private
