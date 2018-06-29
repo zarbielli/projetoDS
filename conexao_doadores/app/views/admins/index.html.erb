@@ -19,12 +19,9 @@
     <div class="main-panel">
         <%= render 'navbar' %>
 
-        <%= render partial: 'dashboard' , locals: {charities: @charities , donators: @donators} %>
-        <%= render 'user' %>
-        <%= render 'donates' %>
-        <%= render 'products' %>
-        <%= render 'user-managments' %>
-        <%= render 'notifications' %>
+        <%= render partial: 'dashboard' , locals: {charities: @pending_charities , donators: @pending_donators} %>        
+        <%= render partial: 'donates', locals: {created_donates: @created_donates , progress_donates: @progress_donates, made_donates: @made_donates} %>
+        <%= render partial: 'user-managments' , locals: {charities: @accepted_charities , donators: @accepted_donators} %> %>
         <%= render 'footer' %>
 
     </div>

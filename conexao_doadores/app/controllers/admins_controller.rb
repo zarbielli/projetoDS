@@ -1,18 +1,45 @@
 class AdminsController < ApplicationController
 
   def index
-    @charities = []
-    @donators = []
+    @pending_charities = []
+    @pending_donators = []
+    @accepted_donators = []
+    @accepted_charities = []
+    @created_donates = []
+    @progress_donates = []
+    @made_donates = []
 
     Donator.all.each do |donator|
       if donator.register_validate.status == false
-        @donators << donator
+        @pending_donators << donator
       end
     end
 
     Charity.all.each do |charity|
       if charity.register_validate.status == false
-        @charities << charity
+        @pending_charities << charity
+      end
+    end
+
+    Donator.all.each do |donator|
+      if donator.register_validate.status == true
+        @accepted_donators << donator
+      end
+    end
+
+    Charity.all.each do |charity|
+      if charity.register_validate.status == true
+        @accepted_charities << charity
+      end
+    end
+
+    Donate.all.each do |donate|
+      if donate.status == "created"
+        @created_donates << donate
+      elsif donate.status == "progress"
+        @progress_donates << donate
+      elsif donate.status == "made"
+        @made_donates << donate
       end
     end
   end
@@ -29,6 +56,7 @@ class AdminsController < ApplicationController
     user.delete
     redirect_to :admins
   end
+
   
 end
   
