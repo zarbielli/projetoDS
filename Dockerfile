@@ -1,11 +1,14 @@
 FROM ruby:2.4.4-jessie
 
 RUN apt-get update -qq && apt-get install -y build-essential libpq-dev nodejs
-RUN mkdir /conexao_doadores
-WORKDIR /conexao_doadores
-COPY $PWD/conexao_doadores/Gemfile /conexao_doadores/Gemfile
-COPY $PWD/conexao_doadores/Gemfile.lock /conexao_doadores/Gemfile.lock
+RUN mkdir /app
+WORKDIR /app
+
+ADD . /app
+
+COPY Gemfile.lock /app/Gemfile.lock
 RUN bundle install
-COPY $PWD/conexao_doadores/ /conexao_doadores
-EXPOSE 3000
-CMD ["bundle", "exec", "rails", "s", "-b", "0.0.0.0"]
+
+ADD ./docker/database.yml /app/config/database.yml
+
+CMD ["bundle", "exec", "rails", "server"]
