@@ -8,22 +8,26 @@ produtores que doam, será formado um ranque dos doadores disponibilizado na pá
 ganharão publicidade na página inicial da aplicação.
 
 
-A aplicação é feita usando um container que foi feito em docker, portanto para executar a aplicação é necessário
-montar a imagem, para isso clone o repositório e navege via terminal até a pasta do projeto e use:
+A aplicação é feita usando um container docker, portanto para executar a aplicação é necessário
+montar a imagem. Para isso clone o repositório e navege via terminal até a pasta do projeto e use:
 
-* `sudo docker build -t ds_conexao_doadores .`
+* `sudo docker-compose build`
 
-Após a imagem montada para executar a imagem use:
+Após o fim do processo:
 
-* `sudo docker run -p 3000:3000 ds_conexao_doadores`
+* `sudo docker-compose run web bash`
 
-Com isso o App já pode ser acessado via navegador, para isso abra a página 
+Para criar e popular o bando de dados use em ordem:
+
+* `rake db:create` 
+* `rake db:migrate`
+* `rake db:seed`
+* `exit`
+
+Agora é so executar:
+
+* `sudo docker-compose up`
+
+O App já pode ser acessado via navegador, para isso abra a página 
 
 * localhost:3000
-
-
-
-
-
-
-
