@@ -40,15 +40,15 @@
     charity5 = Charity.create(name:"Charity5", email: "charity5@gmail.com", password: "123456", cnpj: "15", phone:"9999-9999")
     RegisterValidate.create(status: false, user: charity5)
 
-    donate1 = Donate.create(status: "created", donator: donator1)
+    donate1 = Donate.create(status: "created", donator_id: donator1.id)
     Product.create(description: "Arroz", validity: "10/10/2018", product_type:"Não Perecível" , unit_measurement:"Quilogramas", amount: "200", donate: donate1)
     Product.create(description: "Feijão", validity: "10/10/2018", product_type:"Não Perecível" , unit_measurement:"Quilogramas", amount: "300", donate: donate1)
     
-    donate2 = Donate.create(status: "created", donator: donator1)
+    donate2 = Donate.create(status: "created", donator_id: donator1.id)
     Product.create(description: "Tomate", validity: "02/07/2018", product_type:"Perecível" , unit_measurement:"Quilogramas", amount: "100", donate: donate2)
     Product.create(description: "Banana", validity: "06/09/2018", product_type:"Perecível" , unit_measurement:"Quilogramas", amount: "250", donate: donate2)
     
-    donate3 = Donate.create(status: "created", donator: donator1)
+    donate3 = Donate.create(status: "created", donator_id: donator1.id)
     Product.create(description: "Alface", validity: "03/09/2018", product_type:"Perecível" , unit_measurement:"Unidade", amount: "200", donate: donate3)
     Product.create(description: "Maçã", validity: "06/09/2018", product_type:"Perecível" , unit_measurement:"Quilogramas", amount: "250", donate: donate3)
 

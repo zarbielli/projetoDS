@@ -9,8 +9,10 @@ class AdminsController < ApplicationController
     @progress_donates = []
     @made_donates = []
 
-    Donator.all.each do |donator|
-      if donator.register_validate.status == false
+    donators = Donator.all
+    donators.each do |donator|
+      register_validate = donator.register_validate
+      if register_validate.status == false
         @pending_donators << donator
       end
     end
